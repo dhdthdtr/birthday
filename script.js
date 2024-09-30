@@ -29,3 +29,42 @@ function getRandomColor() {
     ];
     return colors[Math.floor(Math.random() * colors.length)];
 }
+
+// Image Upload Functionality
+const imageInput = document.getElementById('imageInput');
+const imagePreview = document.getElementById('imagePreview');
+
+// Load saved image on page load
+window.addEventListener('load', () => {
+    const savedImage = localStorage.getItem('uploadedImage');
+    if (savedImage) {
+        imagePreview.innerHTML = `<img src="${savedImage}" alt="Uploaded Image">`;
+    }
+});
+
+// Function to handle image upload
+imageInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+
+    if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            // Hide the input box and display the image
+            imageInput.style.display = 'none';  // Hide the input
+            imagePreview.style.display = 'block';  // Show the image preview
+            imagePreview.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image">`;
+        }
+        
+        reader.readAsDataURL(file);
+    } else {
+        imagePreview.innerHTML = '<p>Please select a valid image file.</p>';
+    }
+});
+
+// Function to allow changing the image by clicking the preview image
+imagePreview.addEventListener('click', () => {
+    imageInput.style.display = 'block';  // Show the input again
+    imagePreview.style.display = 'none';  // Hide the image preview
+    imageInput.value = '';  // Reset the input value to allow selecting the same image again
+});
