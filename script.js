@@ -34,14 +34,6 @@ function getRandomColor() {
 const imageInput = document.getElementById('imageInput');
 const imagePreview = document.getElementById('imagePreview');
 
-// Load saved image on page load
-window.addEventListener('load', () => {
-    const savedImage = localStorage.getItem('uploadedImage');
-    if (savedImage) {
-        imagePreview.innerHTML = `<img src="${savedImage}" alt="Uploaded Image">`;
-    }
-});
-
 // Function to handle image upload
 imageInput.addEventListener('change', (event) => {
     const file = event.target.files[0];

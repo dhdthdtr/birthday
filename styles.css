@@ -79,7 +79,7 @@ button:hover {
 
 /* Image Upload Section */
 .image-upload-section {
-    margin: 30px 0;
+    margin: 10px 0;
 }
 
 .image-upload-section h2 {
@@ -109,4 +109,13 @@ button:hover {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     cursor: pointer;
     margin-top: 20px;
+}
+
+.profile-pic {
+    width: 500px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    object-fit: cover;
+    border: 5px solid #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
